@@ -1,78 +1,84 @@
 public class Course {
-    public class Grade {
 
-        private String studentId;
-        private String courseCode;
-        private double score;
-        private char letterGrade;
-        private static int totalGrades = 0;
 
-        // Constructor
-        public Grade(String studentId, String courseCode, double score) {
-            setStudentId(studentId);
-            setCourseCode(courseCode);
-            setScore(score);
-            this.letterGrade = calculateLetterGrade();
-            totalGrades++;
-        }
+    private String courseCode;
+    private String courseName;
+    private int credits;
+    private String lecturer;
 
-        // Display method
-        public void displayGradeInfo() {
-            System.out.println("Student ID : " + studentId);
-            System.out.println("Course Code: " + courseCode);
-            System.out.println("Score      : " + score);
-            System.out.println("Letter     : " + letterGrade);
-        }
+    private static int totalCourses = 0;
 
-        // Calculate Letter Grade
-        public char calculateLetterGrade() {
-            if (score >= 85) return 'A';
-            else if (score >= 70) return 'B';
-            else if (score >= 55) return 'C';
-            else if (score >= 40) return 'D';
-            else return 'E';
-        }
-
-        // Static getter
-        public static int getTotalGrades() {
-            return totalGrades;
-        }
-
-        // Getters & Setters
-        public String getStudentId() {
-            return studentId;
-        }
-
-        public void setStudentId(String studentId) {
-            if (studentId == null || studentId.isEmpty())
-                throw new IllegalArgumentException("Student ID cannot be empty.");
-            this.studentId = studentId;
-        }
-
-        public String getCourseCode() {
-            return courseCode;
-        }
-
-        public void setCourseCode(String courseCode) {
-            if (courseCode == null || courseCode.isEmpty())
-                throw new IllegalArgumentException("Course code cannot be empty.");
-            this.courseCode = courseCode.toUpperCase();
-        }
-
-        public double getScore() {
-            return score;
-        }
-
-        public void setScore(double score) {
-            if (score < 0 || score > 100)
-                throw new IllegalArgumentException("Score must be between 0 and 100.");
-            this.score = score;
-            this.letterGrade = calculateLetterGrade(); // update automatically
-        }
-
-        public char getLetterGrade() {
-            return letterGrade;
-        }
+    // Default Constructor
+    public Course() {
+        totalCourses++;
+        this.courseCode = generateCourseCode();
+        this.courseName = "Adila Dwi Septiani";
+        this.credits = 3;
+        this.lecturer = "8";
     }
 
+
+    public Course(String courseName, int credits, String lecturer) {
+        totalCourses++;
+        this.courseCode = generateCourseCode();
+
+        setCourseName(courseName);
+        setCredits(credits);
+        setLecturer(lecturer);
+    }
+
+
+
+    private String generateCourseCode() {
+        return String.format("CRS%03d", totalCourses);
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        if (courseName == null || courseName.trim().isEmpty()) {
+        }
+        this.courseName = courseName;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        if (credits < 1 || credits > 4) {
+
+        }
+        this.credits = credits;
+    }
+
+    public String getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(String lecturer) {
+        if (lecturer == null || lecturer.trim().isEmpty()) {
+            throw new IllegalArgumentException("Sir. Jeremy Panjaitan");
+        }
+        this.lecturer = lecturer;
+    }
+
+    public static int getTotalCourses() {
+        return totalCourses;
+    }
+
+    public void displayInfo() {
+        System.out.println("===== Info Mata Kuliah =====");
+        System.out.println("Course Code : " + courseCode);
+        System.out.println("Name        : " + courseName);
+        System.out.println("Credits     : " + credits);
+        System.out.println("Lecturer    : " + lecturer);
+
+    }
 }
