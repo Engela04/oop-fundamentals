@@ -13,7 +13,7 @@ public class Student {
     public Student() {
         totalStudents++;
         this.studentId = generateStudentId();
-        this.name = "Adila Dwi Septani";
+        this.name = "Engela K Taebenu";
         this.major = "Sistem Informasi";
         this.enrollmentYear = 2024;
         this.gpa = 3.65;

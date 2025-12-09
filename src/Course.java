@@ -12,7 +12,7 @@ public class Course {
     public Course() {
         totalCourses++;
         this.courseCode = generateCourseCode();
-        this.courseName = "Adila Dwi Septiani";
+        this.courseName = "Engela K Taebenu";
         this.credits = 3;
         this.lecturer = "8";
     }
